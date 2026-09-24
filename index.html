@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preparation of Liquid Detergent — Chemistry Prototyping Exhibition</title>
+  <meta name="description" content="A premium, interactive chemistry digital exhibition for the Chemistry Prototyping Project on the Preparation of Liquid Detergent." />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+</head>
+<body>
+
+  <!-- Top Scroll Progress Indicator -->
+  <div class="scroll-progress-bar" id="scroll-progress-bar"></div>
+
+  <!-- Sticky Navigation Header -->
+  <header class="navbar" id="main-navbar">
+    <div class="container nav-container">
+      <a href="#home" class="brand-logo" data-tab="home" aria-label="Chemistry Project Home">
+        <div class="brand-icon">🧪</div>
+        <div>
+          <span>CHEM PROTOTYPING</span>
+          <div style="font-size: 0.6875rem; font-weight: 500; color: var(--text-muted); letter-spacing: 0.04em;">LIQUID DETERGENT</div>
+        </div>
+      </a>
+
+      <!-- Desktop & Mobile Navigation Menu (Separate Tabs) -->
+      <nav>
+        <ul class="nav-links" id="nav-links-menu">
+          <li><a href="#home" class="nav-link active" data-tab="home">🏠 Home</a></li>
+          <li><a href="#ingredients" class="nav-link" data-tab="ingredients">🧪 Ingredients</a></li>
+          <li><a href="#process" class="nav-link" data-tab="process">⚗️ Process</a></li>
+          <li><a href="#diagrams" class="nav-link" data-tab="diagrams">📊 Diagrams</a></li>
+          <li><a href="#gallery" class="nav-link" data-tab="gallery">🎥 Experiment</a></li>
+          <li><a href="#applications" class="nav-link" data-tab="applications">🌍 Applications</a></li>
+          <li><a href="#quiz" class="nav-link" data-tab="quiz">🧠 Quiz</a></li>
+        </ul>
+      </nav>
+
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle navigation menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- =========================================================================
+         TAB 1 — HOME 🏠 (Hero Section & Full-Width Group Photo Display)
+         ========================================================================= -->
+    <section class="tab-pane active" id="home">
+      <div class="hero-section">
+        <canvas class="hero-canvas" id="hero-particles-canvas"></canvas>
+
+        <div class="container">
+          <!-- Hero Header Title & Actions -->
+          <div class="hero-header-box">
+            <div class="hero-badge-row">
+              <span class="section-badge">✨ CHEMISTRY PROTOTYPING</span>
+              <span style="font-size: 0.8125rem; font-weight: 600; color: var(--text-muted);"></span>
+            </div>
+
+            <h1 class="hero-title">
+              PREPARATION OF <span class="highlight">LIQUID DETERGENT</span>
+            </h1>
+
+            <h2 class="hero-subtitle">Chemistry Prototyping Exhibition</h2>
+
+            <p class="hero-intro">
+              “Exploring the preparation, chemistry, process, applications and advantages of liquid detergent.”
+            </p>
+
+            <div class="hero-actions">
+              <button class="btn btn-primary" data-switch-tab="ingredients">
+                Explore The Experiment →
+              </button>
+              <button class="btn btn-secondary" data-switch-tab="process">
+                🎬 Watch Animated Process
+              </button>
+              <button class="btn btn-secondary" data-switch-tab="gallery">
+                📸 View Laboratory Photos
+              </button>
+            </div>
+          </div>
+
+          <!-- WIDE FULL-VISIBILITY GROUP PHOTO SHOWCASE (ALL 4 MEMBERS CLEARLY VISIBLE) -->
+          <div class="hero-wide-showcase">
+            <div class="hero-photo-card">
+              <div class="hero-photo-frame">
+                <!-- ACTUAL GROUP PHOTO DISPLAYED IN FULL NATURAL ASPECT RATIO (NO CROPPING) -->
+                <img src="media/experiment-photos/Chemistry Project Group Photo.png" alt="Chemistry Project Group Photo — Mahesh Ingle, Sahil Golait, Lokesh Rathod, Deepak Kulkarni" class="hero-photo-img" id="hero-group-photo-img" />
+
+                <!-- Fallback if photo not found -->
+                <div class="hero-photo-placeholder" id="hero-group-photo-placeholder" style="display: none;">
+                  <div class="hero-photo-placeholder-icon">📸</div>
+                  <h4 style="font-size: 1.125rem; margin-bottom: 6px; color: var(--text-main);">Group Photo Display Slot</h4>
+                  <span class="section-badge">Team Exhibition Photo</span>
+                </div>
+              </div>
+
+              <div class="hero-photo-overlay">
+                <div>
+                  <span style="font-weight: 700; color: var(--text-main);">👥 Chemistry Project Research Group</span>
+                  <span style="font-size: 0.8125rem; color: var(--text-muted); margin-left: 8px;">(Mahesh Ingle, Sahil Golait, Lokesh Rathod, Deepak Kulkarni)</span>
+                </div>
+                <span class="hero-photo-tag">Chemistry Prototyping Team</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Group Members Info Strip -->
+          <div class="members-wrapper">
+            <div class="members-label">
+              <span>🔬 Project Research Group Members:</span>
+            </div>
+            <div class="members-list" id="hero-members-list">
+              <!-- Populated dynamically via js/data.js -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         TAB 2 — INGREDIENTS 🧪 (Interactive Chemical Cards & Information)
+         ========================================================================= -->
+    <section class="tab-pane" id="ingredients">
+      <div class="section section-alt">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-badge">🧪 Formulation Chemistry</span>
+            <h2 class="section-title">Ingredients &amp; Chemicals Used</h2>
+            <p class="section-subtitle">
+              Every constituent in liquid detergent serves a precise physicochemical function—from interfacial tension reduction and micelle formation to mineral chelation and alkaline buffering.
+            </p>
+          </div>
+
+          <!-- 7 Interactive Ingredient Cards Grid -->
+          <div class="ingredients-grid" id="ingredients-grid-root">
+            <!-- Rendered dynamically from js/data.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         TAB 3 — STEP-BY-STEP PROCESS ⚗️ (Animated Video & Interactive Timeline)
+         ========================================================================= -->
+    <section class="tab-pane" id="process">
+      <div class="section">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-badge">🎬 Process Visualization</span>
+            <h2 class="section-title">Step-by-Step Preparation Process</h2>
+            <p class="section-subtitle">
+              Observe the sequential synthesis steps via our dedicated animated process video followed by the interactive stage-by-stage laboratory timeline.
+            </p>
+          </div>
+
+          <!-- Animated Process Video Showcase Area -->
+          <div class="video-showcase-container reveal-on-scroll">
+            <div class="video-header-bar">
+              <div class="video-header-title">
+                <span>🎬 Animated Video of the Experiment</span>
+              </div>
+              <span class="section-badge" style="margin-bottom: 0;">Animated Process Film</span>
+            </div>
+
+            <div class="video-player-wrapper">
+              <!-- ACTUAL ANIMATED EXPERIMENT VIDEO -->
+              <video class="custom-video-element" controls preload="metadata" poster="media/experiment-photos/Processing.png" id="animated-process-video-el">
+                <source src="media/experiment-videos/animated-video-chem_proto.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+
+          <!-- Interactive Process Timeline Component -->
+          <div class="timeline-section-wrapper reveal-on-scroll">
+            <div class="timeline-nav-tabs" id="timeline-nav-tabs">
+              <!-- Rendered dynamically via js/app.js -->
+            </div>
+
+            <div class="timeline-step-display" id="timeline-step-display-box">
+              <!-- Active step content rendered dynamically -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         TAB 4 — DIAGRAMS 📊 (Block Diagram & Process Flow Diagram)
+         ========================================================================= -->
+    <section class="tab-pane" id="diagrams">
+      <div class="section section-alt">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-badge">📊 Engineering Schematics</span>
+            <h2 class="section-title">Process Visualization</h2>
+            <p class="section-subtitle">
+              High-resolution visual representations of the chemical operations and engineering mass flow. Click either schematic for full-screen magnification and zoom inspection.
+            </p>
+          </div>
+
+          <div class="diagrams-grid">
+            <!-- SECTION A: BLOCK DIAGRAM -->
+            <div class="diagram-card reveal-on-scroll" id="block-diagram-view">
+              <div class="diagram-viewer-frame">
+                <!-- ACTUAL BLOCK DIAGRAM -->
+                <img src="media/experiment-photos/Block_diagram_Chem-proto.jpeg" alt="Block Diagram — Liquid Detergent Preparation Flow" class="diagram-img" id="block-diagram-img-el" />
+                <div class="diagram-zoom-hint">🔍 Click for Full Resolution Zoom</div>
+              </div>
+              <div class="diagram-details">
+                <div>
+                  <h3 class="diagram-title">Section A — Block Diagram</h3>
+                  <p class="diagram-desc">
+                    <strong>About this diagram:</strong> Schematic block representation detailing raw material inputs (Water, Coconut Oil, NaOH, Na₂CO₃, STPP, SLS, SLES), mixing sequences, controlled heating, homogenization, and final bottling stages.
+                  </p>
+                </div>
+                <button class="btn btn-secondary" style="width: 100%;" type="button">
+                  Inspect Block Diagram 🔍
+                </button>
+              </div>
+            </div>
+
+            <!-- SECTION B: PROCESS FLOW DIAGRAM -->
+            <div class="diagram-card reveal-on-scroll delay-100" id="process-flow-diagram-view">
+              <div class="diagram-viewer-frame">
+                <!-- ACTUAL PROCESS FLOW DIAGRAM -->
+                <img src="media/experiment-photos/Screenshot 2026-09-01 233607.png" alt="Process Flow Diagram — Detailed Unit Operations" class="diagram-img" id="process-flow-img-el" />
+                <div class="diagram-zoom-hint">🔍 Click for Full Resolution Zoom</div>
+              </div>
+              <div class="diagram-details">
+                <div>
+                  <h3 class="diagram-title">Section B — Process Flow Diagram</h3>
+                  <p class="diagram-desc">
+                    <strong>About this diagram:</strong> Comprehensive chemical reaction and process flow schematic depicting sequential builder dissolution, stoichiometric saponification, surfactant micelle matrix integration, and quality assurance checkpoints.
+                  </p>
+                </div>
+                <button class="btn btn-secondary" style="width: 100%;" type="button">
+                  Inspect Process Flow Diagram 🔍
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         TAB 5 — EXPERIMENT IN ACTION 🎥📸 (Real Laboratory Documentation)
+         ========================================================================= -->
+    <section class="tab-pane" id="gallery">
+      <div class="section">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-badge">📸 Laboratory Record</span>
+            <h2 class="section-title">Experiment in Action</h2>
+            <p class="section-subtitle">
+              Authentic documentation of our laboratory experiment featuring our real experimental video and sequential step photographs.
+            </p>
+          </div>
+
+          <!-- SECTION A: ONE REAL EXPERIMENT VIDEO -->
+          <div class="experiment-video-section reveal-on-scroll">
+            <div class="video-showcase-container" style="margin-bottom: 0;">
+              <div class="video-header-bar">
+                <div class="video-header-title">
+                  <span>🎥 Our Experimental Video</span>
+                </div>
+                <span class="section-badge" style="margin-bottom: 0;">Actual Lab Recording</span>
+              </div>
+
+              <div class="video-player-wrapper">
+                <!-- ACTUAL REAL EXPERIMENT VIDEO -->
+                <video class="custom-video-element" controls preload="metadata" id="real-experiment-video-el">
+                  <source src="media/experiment-videos/our experimental video.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+
+              <div style="padding: 18px 24px; background-color: var(--bg-card); border-top: 1px solid var(--border-subtle);">
+                <h4 style="font-size: 1.125rem; margin-bottom: 4px; color: var(--text-main);">Watch Our Actual Liquid Detergent Preparation Experiment</h4>
+                <p style="font-size: 0.875rem; color: var(--text-secondary);">
+                  Direct laboratory footage documenting our group carrying out measurements, builder dissolution, surfactant blending, and final product packaging.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION B: REAL EXPERIMENT PHOTOS (5 Photos) -->
+          <div class="gallery-grid-wrapper">
+            <div style="text-align: center; margin-bottom: 32px;">
+              <h3 style="font-size: 1.5rem; color: var(--text-main); margin-bottom: 8px;">Real Experiment Photographic Stages</h3>
+              <p style="font-size: 0.9375rem; color: var(--text-muted);">Click any photograph to view high-resolution details in the interactive lightbox.</p>
+            </div>
+
+            <div class="experiment-photos-grid" id="experiment-photos-grid-root">
+              <!-- Rendered dynamically from js/data.js -->
+            </div>
+          </div>
+
+          <!-- EXPERIMENT JOURNEY STEPPER -->
+          <div class="journey-container reveal-on-scroll">
+            <div style="margin-bottom: 24px;">
+              <span class="section-badge">Sequential Milestone</span>
+              <h3 style="font-size: 1.35rem; color: var(--text-main);">Interactive Experiment Journey</h3>
+              <p style="font-size: 0.875rem; color: var(--text-muted);">Click any stage to transition smoothly through our laboratory progression.</p>
+            </div>
+
+            <div class="journey-stepper-row" id="journey-stepper-row">
+              <!-- Journey Stepper buttons generated in app.js -->
+            </div>
+
+            <div class="journey-display-card" id="journey-display-card-root">
+              <!-- Active Journey Photo & Record Card -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         TAB 6 — APPLICATIONS & ADVANTAGES 🌍 (Pictorial Cards & Micelle Physics)
+         ========================================================================= -->
+    <section class="tab-pane" id="applications">
+      <div class="section section-alt">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-badge">🌍 Practical Utility</span>
+            <h2 class="section-title">Applications &amp; Advantages</h2>
+            <p class="section-subtitle">
+              Liquid detergent formulations excel in diverse cleaning contexts due to their rapid dispersion, micellar encapsulation efficiency, and gentle matrix.
+            </p>
+          </div>
+
+          <!-- Applications Section -->
+          <div style="margin-bottom: 48px;">
+            <h3 style="font-size: 1.5rem; margin-bottom: 20px; color: var(--text-main); text-align: center;">Core Cleaning Applications</h3>
+            <div class="applications-grid" id="applications-grid-root">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+
+          <!-- Advantages Section -->
+          <div style="margin-bottom: 64px;">
+            <h3 style="font-size: 1.5rem; margin-bottom: 20px; color: var(--text-main); text-align: center;">Key Advantages Over Traditional Formulations</h3>
+            <div class="advantages-grid" id="advantages-grid-root">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+
+          <!-- WHY IS DETERGENT EFFECTIVE? Interactive Surfactant Micelle Mechanism -->
+          <div class="surfactant-explainer-box reveal-on-scroll">
+            <div class="surfactant-interactive-grid">
+              <div>
+                <span class="section-badge">🔬 Colloidal Chemistry</span>
+                <h3 style="font-size: 1.625rem; margin-bottom: 12px; color: var(--text-main);">Why is Detergent Effective?</h3>
+                <p style="font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 20px;">
+                  Surfactant molecules possess an amphiphilic structure: a <strong>polar hydrophilic head</strong> attracted to water, and a <strong>non-polar hydrophobic hydrocarbon tail</strong> attracted to oil and dirt.
+                </p>
+
+                <!-- Interactive Step Switcher -->
+                <div class="micelle-stage-tabs">
+                  <button class="micelle-tab-btn active" data-stage="1">Stage 1: Dispersion</button>
+                  <button class="micelle-tab-btn" data-stage="2">Stage 2: Soil Contact</button>
+                  <button class="micelle-tab-btn" data-stage="3">Stage 3: Micelle Lift</button>
+                </div>
+
+                <div id="micelle-explainer-text" style="font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.6; padding: 14px 18px; background-color: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);">
+                  <!-- Updated dynamically -->
+                </div>
+              </div>
+
+              <div class="micelle-visualizer-canvas-box" id="micelle-svg-canvas">
+                <!-- Animated SVG Micelle state rendered dynamically -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         TAB 7 — INTERACTIVE QUIZ 🧠 (10–15 Question Chemistry Knowledge Test)
+         ========================================================================= -->
+    <section class="tab-pane" id="quiz">
+      <div class="section">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-badge">🧠 Knowledge Assessment</span>
+            <h2 class="section-title">Test Your Chemistry Knowledge</h2>
+            <p class="section-subtitle">
+              Evaluate your understanding of surfactant chemistry, chemical formulas, builders, saponification, and laboratory safety.
+            </p>
+          </div>
+
+          <div class="quiz-container reveal-on-scroll" id="quiz-engine-root">
+            <!-- Quiz engine UI rendered via js/quiz.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       FOOTER
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand-logo" style="margin-bottom: 12px;" data-tab="home">
+            <div class="brand-icon">🧪</div>
+            <span style="font-size: 1.125rem;">PREPARATION OF LIQUID DETERGENT</span>
+          </div>
+          <div class="footer-brand-sub">Chemistry Prototyping Project Exhibition</div>
+          <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; max-width: 420px;">
+            A modern interactive chemistry project dedicated to the synthesis, formulation dynamics, and surfactant physics of liquid cleansing agents.
+          </p>
+        </div>
+
+        <div>
+          <h4 style="font-size: 1rem; margin-bottom: 16px; color: var(--text-main);">👥 Research Group Members</h4>
+          <ul style="list-style: none;" id="footer-members-list">
+            <!-- Dynamically populated -->
+          </ul>
+        </div>
+
+        <div>
+          <h4 style="font-size: 1rem; margin-bottom: 16px; color: var(--text-main);">🗺️ Navigation</h4>
+          <ul class="footer-links-list">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#ingredients">Ingredients &amp; Chemicals</a></li>
+            <li><a href="#process">Step-by-Step Process</a></li>
+            <li><a href="#diagrams">Engineering Diagrams</a></li>
+            <li><a href="#gallery">Experiment in Action</a></li>
+            <li><a href="#applications">Applications &amp; Advantages</a></li>
+            <li><a href="#quiz">Interactive Quiz</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2025–2026 Chemistry Prototyping Project. All rights reserved.</div>
+        <div style="font-size: 0.8125rem; color: var(--text-muted);">
+          White Scientific Exhibition Theme • Clean, Accurate &amp; Responsive
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Back To Top Button -->
+  <button class="back-to-top-btn" id="back-to-top-btn" aria-label="Back to top">↑</button>
+
+  <!-- =========================================================================
+       MODAL: INGREDIENT DETAILS
+       ========================================================================= -->
+  <div class="modal-backdrop" id="global-modal" role="dialog" aria-modal="true">
+    <div class="modal-content-box">
+      <button class="modal-close-btn" id="global-modal-close" aria-label="Close modal">✕</button>
+      <div id="global-modal-content"></div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       LIGHTBOX: HIGH-RESOLUTION DIAGRAM & PHOTO ZOOM
+       ========================================================================= -->
+  <div class="lightbox-modal" id="global-lightbox" role="dialog" aria-modal="true">
+    <div class="lightbox-topbar">
+      <div class="lightbox-counter" id="lightbox-counter">1 / 5</div>
+      <div class="lightbox-controls">
+        <button class="lightbox-btn" id="lightbox-zoomin-btn" title="Zoom In">➕</button>
+        <button class="lightbox-btn" id="lightbox-zoomout-btn" title="Zoom Out">➖</button>
+        <button class="lightbox-btn" id="lightbox-reset-btn" title="Reset Zoom">🔄</button>
+        <button class="lightbox-btn" id="lightbox-prev-btn" title="Previous Item">◀</button>
+        <button class="lightbox-btn" id="lightbox-next-btn" title="Next Item">▶</button>
+        <button class="lightbox-btn" id="lightbox-close-btn" title="Close Lightbox" style="background: rgba(225, 29, 72, 0.6);">✕</button>
+      </div>
+    </div>
+
+    <div class="lightbox-body">
+      <img src="" alt="Exhibition View" class="lightbox-img" id="lightbox-img" />
+    </div>
+
+    <div class="lightbox-caption-bar" id="lightbox-caption-text">
+      <!-- High-res caption -->
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
